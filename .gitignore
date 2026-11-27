@@ -1,0 +1,10 @@
+.cache/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+report/*.aux
+report/*.log
+report/*.out
+report/*.xdv

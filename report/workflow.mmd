@@ -1,0 +1,41 @@
+flowchart TB
+    subgraph CYCLE["1 | Cyclic visual analytics workflow"]
+        direction LR
+        D[Data] <--> V[Visualization]
+        V <--> K[Knowledge<br/>inferences]
+        K <--> M[Model]
+        M <--> D
+        V <--> M
+        D <--> D
+        V <--> V
+        M <--> M
+        K <--> K
+    end
+
+    subgraph UNROLLED["2 | Unrolled project workflow"]
+        direction TB
+        D1[Data · iteration 1<br/>A1 match + delivery tables]
+        V1[Visualization · initial<br/>Six-over runs and wickets]
+        M1[Model + analysis<br/>Rates, K-means, logistic]
+        V1R[Visualization · results<br/>Outcome patterns + comparison]
+        K1[Knowledge · inference 1<br/>Raw state omits target context]
+        D2[Data · iteration 2<br/>Add target-relative features]
+        V2[Visualization · revised<br/>Required-rate outcome gradient]
+        M2[Model · iteration 2<br/>Pressure-aware clustering + logistic]
+        V2R[Visualization · evaluation<br/>Profiles + held-out comparison]
+        K2[Knowledge · final inference<br/>Interpret findings and limits]
+
+        D1 --> V1 --> M1 --> V1R --> K1
+        K1 -->|Feedback loop: inference changes dataset| D2
+        D2 --> V2 --> M2 --> V2R --> K2
+    end
+
+    classDef data fill:#E8EEF3,stroke:#567184,color:#17324D;
+    classDef view fill:#DCEFEB,stroke:#567184,color:#17324D;
+    classDef model fill:#E6E3F3,stroke:#567184,color:#17324D;
+    classDef knowledge fill:#FFF1D6,stroke:#567184,color:#17324D;
+    class D,D1,D2 data;
+    class V,V1,V1R,V2,V2R view;
+    class M,M1,M2 model;
+    class K,K1,K2 knowledge;
+    linkStyle 3,4 stroke:#C45849,stroke-width:2px;

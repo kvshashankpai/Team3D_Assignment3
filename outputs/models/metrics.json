@@ -1,0 +1,97 @@
+{
+  "feature_sets": {
+    "iteration1_raw_state": [
+      "runs_after_six",
+      "wickets_lost_after_six"
+    ],
+    "iteration2_target_pressure": [
+      "runs_after_six",
+      "wickets_lost_after_six",
+      "required_run_rate"
+    ]
+  },
+  "logistic": {
+    "l2_alpha": 0.02,
+    "learning_rate": 0.1,
+    "max_iterations": 10000,
+    "solver": "batch gradient descent",
+    "threshold": 0.5
+  },
+  "majority_baseline_class": 1,
+  "models": {
+    "iteration1_raw_state": {
+      "accuracy": 0.6772727272727272,
+      "brier_score": 0.2090819297819453,
+      "coefficients_standardized": {
+        "intercept": 0.17683425954626697,
+        "runs_after_six": 0.20031413094748196,
+        "wickets_lost_after_six": -0.6867604914584682
+      },
+      "f1": 0.7360594795539034,
+      "false_negative": 22,
+      "false_positive": 49,
+      "iterations": 602,
+      "precision": 0.668918918918919,
+      "recall": 0.8181818181818182,
+      "roc_auc": 0.7294849319642708,
+      "true_negative": 50,
+      "true_positive": 99
+    },
+    "iteration2_target_pressure": {
+      "accuracy": 0.7772727272727272,
+      "brier_score": 0.14769081525317326,
+      "coefficients_standardized": {
+        "intercept": 0.2232219561404535,
+        "required_run_rate": -1.1479702897874704,
+        "runs_after_six": 0.1876987166860697,
+        "wickets_lost_after_six": -0.5230384352443456
+      },
+      "f1": 0.7741935483870968,
+      "false_negative": 37,
+      "false_positive": 12,
+      "iterations": 823,
+      "precision": 0.875,
+      "recall": 0.6942148760330579,
+      "roc_auc": 0.8900993405125637,
+      "true_negative": 87,
+      "true_positive": 84
+    },
+    "majority_baseline": {
+      "accuracy": 0.55,
+      "brier_score": 0.45,
+      "f1": 0.7096774193548387,
+      "false_negative": 0,
+      "false_positive": 99,
+      "precision": 0.55,
+      "recall": 1.0,
+      "roc_auc": 0.5,
+      "true_negative": 0,
+      "true_positive": 121
+    },
+    "majority_baseline_probability": {
+      "accuracy": 0.55,
+      "brier_score": 0.24756249762827354,
+      "f1": 0.7096774193548387,
+      "false_negative": 0,
+      "false_positive": 99,
+      "precision": 0.55,
+      "recall": 1.0,
+      "roc_auc": 0.5,
+      "true_negative": 0,
+      "true_positive": 121
+    }
+  },
+  "observation_time": "after 36 legal balls in second-innings overs 0-5",
+  "split": {
+    "cutoff_date_inclusive_for_test": "2023-05-18",
+    "strategy": "chronological by distinct match dates; earlier dates train, later dates test",
+    "test_date_max": "2026-05-31",
+    "test_date_min": "2023-05-18",
+    "test_rows": 220,
+    "train_date_max": "2023-05-17",
+    "train_date_min": "2008-04-18",
+    "train_rows": 974
+  },
+  "target": "chase_success (second-innings batting team is the official winner)",
+  "training_only_preprocessing": "Each logistic model's feature means and standard deviations are fit on training rows only."
+}

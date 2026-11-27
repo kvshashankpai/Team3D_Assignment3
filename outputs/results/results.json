@@ -1,0 +1,235 @@
+{
+  "data_source_directory": "/Users/shashank/IIITB/sem5/DV/Assignment1/new_data",
+  "eligibility_audit": {
+    "d_l_method_matches": 23,
+    "eligible_states": 1194,
+    "matches_input": 1243,
+    "matches_with_first_innings": 1243,
+    "matches_with_second_innings_six_over_data": 1237,
+    "matches_with_short_scheduled_overs": 0,
+    "normal_result_with_winner": 1218,
+    "rows_with_target_reached_by_six_overs": 0,
+    "second_innings_multi_batting_team_in_powerplay": 0,
+    "second_innings_with_at_least_36_legal_balls_in_powerplay": 1228,
+    "state_date_max": "2026-05-31",
+    "state_date_min": "2008-04-18",
+    "successful_chases": 649,
+    "unsuccessful_chases": 545
+  },
+  "figures": [
+    "images/iteration1_state_outcomes.png",
+    "images/iteration1_clusters.png",
+    "images/iteration2_pressure_outcomes.png",
+    "images/iteration2_clusters.png",
+    "images/model_comparison.png",
+    "images/workflow_diagram.png"
+  ],
+  "iteration1_clustering": {
+    "centers_in_original_units": [
+      {
+        "cluster_iteration1": 1,
+        "runs_after_six": 33.17446808510638,
+        "wickets_lost_after_six": 2.8680851063829778
+      },
+      {
+        "cluster_iteration1": 2,
+        "runs_after_six": 45.439698492462306,
+        "wickets_lost_after_six": 0.6256281407035206
+      },
+      {
+        "cluster_iteration1": 3,
+        "runs_after_six": 51.04713804713805,
+        "wickets_lost_after_six": 2.3232323232323204
+      },
+      {
+        "cluster_iteration1": 4,
+        "runs_after_six": 67.36363636363635,
+        "wickets_lost_after_six": 0.6477272727272724
+      }
+    ],
+    "cluster_counts": {
+      "1": 235,
+      "2": 398,
+      "3": 297,
+      "4": 264
+    },
+    "clusters": 4,
+    "features": [
+      "runs_after_six",
+      "wickets_lost_after_six"
+    ],
+    "inertia_standardized": 742.131071024892,
+    "initializations": 10,
+    "interpretation_note": "Cluster numbers are stable display indices, not natural cricket categories.",
+    "seed": 732,
+    "silhouette_standardized": 0.375490987732131
+  },
+  "iteration2_clustering": {
+    "centers_in_original_units": [
+      {
+        "cluster_iteration2": 1,
+        "required_run_rate": 9.970053238686779,
+        "runs_after_six": 38.33229813664596,
+        "wickets_lost_after_six": 2.8664596273291956
+      },
+      {
+        "cluster_iteration2": 2,
+        "required_run_rate": 7.772884882108183,
+        "runs_after_six": 43.22815533980583,
+        "wickets_lost_after_six": 1.0194174757281544
+      },
+      {
+        "cluster_iteration2": 3,
+        "required_run_rate": 10.561743341404357,
+        "runs_after_six": 61.402542372881356,
+        "wickets_lost_after_six": 1.2923728813559323
+      },
+      {
+        "cluster_iteration2": 4,
+        "required_run_rate": 6.360012755102041,
+        "runs_after_six": 63.31249999999999,
+        "wickets_lost_after_six": 0.6071428571428565
+      }
+    ],
+    "cluster_counts": {
+      "1": 322,
+      "2": 412,
+      "3": 236,
+      "4": 224
+    },
+    "clusters": 4,
+    "features": [
+      "runs_after_six",
+      "wickets_lost_after_six",
+      "required_run_rate"
+    ],
+    "inertia_standardized": 1663.1777927659746,
+    "initializations": 10,
+    "interpretation_note": "Cluster numbers are stable display indices, not natural cricket categories.",
+    "seed": 732,
+    "silhouette_standardized": 0.24633414854826008
+  },
+  "models": {
+    "feature_sets": {
+      "iteration1_raw_state": [
+        "runs_after_six",
+        "wickets_lost_after_six"
+      ],
+      "iteration2_target_pressure": [
+        "runs_after_six",
+        "wickets_lost_after_six",
+        "required_run_rate"
+      ]
+    },
+    "logistic": {
+      "l2_alpha": 0.02,
+      "learning_rate": 0.1,
+      "max_iterations": 10000,
+      "solver": "batch gradient descent",
+      "threshold": 0.5
+    },
+    "majority_baseline_class": 1,
+    "models": {
+      "iteration1_raw_state": {
+        "accuracy": 0.6772727272727272,
+        "brier_score": 0.2090819297819453,
+        "coefficients_standardized": {
+          "intercept": 0.17683425954626697,
+          "runs_after_six": 0.20031413094748196,
+          "wickets_lost_after_six": -0.6867604914584682
+        },
+        "f1": 0.7360594795539034,
+        "false_negative": 22,
+        "false_positive": 49,
+        "iterations": 602,
+        "precision": 0.668918918918919,
+        "recall": 0.8181818181818182,
+        "roc_auc": 0.7294849319642708,
+        "true_negative": 50,
+        "true_positive": 99
+      },
+      "iteration2_target_pressure": {
+        "accuracy": 0.7772727272727272,
+        "brier_score": 0.14769081525317326,
+        "coefficients_standardized": {
+          "intercept": 0.2232219561404535,
+          "required_run_rate": -1.1479702897874704,
+          "runs_after_six": 0.1876987166860697,
+          "wickets_lost_after_six": -0.5230384352443456
+        },
+        "f1": 0.7741935483870968,
+        "false_negative": 37,
+        "false_positive": 12,
+        "iterations": 823,
+        "precision": 0.875,
+        "recall": 0.6942148760330579,
+        "roc_auc": 0.8900993405125637,
+        "true_negative": 87,
+        "true_positive": 84
+      },
+      "majority_baseline": {
+        "accuracy": 0.55,
+        "brier_score": 0.45,
+        "f1": 0.7096774193548387,
+        "false_negative": 0,
+        "false_positive": 99,
+        "precision": 0.55,
+        "recall": 1.0,
+        "roc_auc": 0.5,
+        "true_negative": 0,
+        "true_positive": 121
+      },
+      "majority_baseline_probability": {
+        "accuracy": 0.55,
+        "brier_score": 0.24756249762827354,
+        "f1": 0.7096774193548387,
+        "false_negative": 0,
+        "false_positive": 99,
+        "precision": 0.55,
+        "recall": 1.0,
+        "roc_auc": 0.5,
+        "true_negative": 0,
+        "true_positive": 121
+      }
+    },
+    "observation_time": "after 36 legal balls in second-innings overs 0-5",
+    "split": {
+      "cutoff_date_inclusive_for_test": "2023-05-18",
+      "strategy": "chronological by distinct match dates; earlier dates train, later dates test",
+      "test_date_max": "2026-05-31",
+      "test_date_min": "2023-05-18",
+      "test_rows": 220,
+      "train_date_max": "2023-05-17",
+      "train_date_min": "2008-04-18",
+      "train_rows": 974
+    },
+    "target": "chase_success (second-innings batting team is the official winner)",
+    "training_only_preprocessing": "Each logistic model's feature means and standard deviations are fit on training rows only."
+  },
+  "project": "DAS732 A3 IPL chase-state visual analytics",
+  "random_seed": 732,
+  "summary": {
+    "bootstrap": {
+      "iterations": 2000,
+      "method": "season-block percentile bootstrap",
+      "seed": 732
+    },
+    "median_powerplay_runs": 48.0,
+    "median_target": 169.0,
+    "median_wickets_lost": 1.0,
+    "n_matches": 1194,
+    "overall_success_rate": 0.5435510887772195,
+    "pressure_difference_ci_95_season_block": [
+      0.6498915743932232,
+      0.7633583330009506
+    ],
+    "pressure_low_high_rate_difference": 0.7072082984627582,
+    "pressure_q1_matches": 311,
+    "pressure_q1_success_rate": 0.8681672025723473,
+    "pressure_q4_matches": 292,
+    "pressure_q4_success_rate": 0.16095890410958905,
+    "pressure_quartile_method": "equal-frequency quartiles over eligible matches",
+    "successful_chases": 649,
+    "unsuccessful_chases": 545
+  }
+}

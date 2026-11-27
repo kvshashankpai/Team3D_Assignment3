@@ -1,0 +1,67 @@
+scope,metric,value,details
+matches,table_profile,1243,columns=21; missing_cells=2606; exact_duplicate_rows=0
+matches,field_missing:match_id,0,dtype=int64; missing_pct=0.000
+matches,field_missing:date,0,dtype=datetime64[us]; missing_pct=0.000
+matches,field_missing:season,0,dtype=str; missing_pct=0.000
+matches,field_missing:city,51,dtype=str; missing_pct=4.103
+matches,field_missing:venue,0,dtype=str; missing_pct=0.000
+matches,field_missing:team1,0,dtype=str; missing_pct=0.000
+matches,field_missing:team2,0,dtype=str; missing_pct=0.000
+matches,field_missing:toss_winner,0,dtype=str; missing_pct=0.000
+matches,field_missing:toss_decision,0,dtype=str; missing_pct=0.000
+matches,field_missing:winner,25,dtype=str; missing_pct=2.011
+matches,field_missing:win_by_runs,0,dtype=int64; missing_pct=0.000
+matches,field_missing:win_by_wickets,0,dtype=int64; missing_pct=0.000
+matches,field_missing:player_of_match,9,dtype=str; missing_pct=0.724
+matches,field_missing:match_type,0,dtype=str; missing_pct=0.000
+matches,field_missing:gender,0,dtype=str; missing_pct=0.000
+matches,field_missing:overs,0,dtype=int64; missing_pct=0.000
+matches,field_missing:result,0,dtype=str; missing_pct=0.000
+matches,field_missing:method,1220,dtype=str; missing_pct=98.150
+matches,field_missing:eliminator,1227,dtype=str; missing_pct=98.713
+matches,field_missing:event_name,0,dtype=str; missing_pct=0.000
+matches,field_missing:match_number,74,dtype=float64; missing_pct=5.953
+deliveries,table_profile,295732,columns=22; missing_cells=847065; exact_duplicate_rows=470
+deliveries,field_missing:match_id,0,dtype=int64; missing_pct=0.000
+deliveries,field_missing:innings,0,dtype=int64; missing_pct=0.000
+deliveries,field_missing:over,0,dtype=int64; missing_pct=0.000
+deliveries,field_missing:ball,0,dtype=int64; missing_pct=0.000
+deliveries,field_missing:batter,0,dtype=str; missing_pct=0.000
+deliveries,field_missing:bowler,0,dtype=str; missing_pct=0.000
+deliveries,field_missing:non_striker,0,dtype=str; missing_pct=0.000
+deliveries,field_missing:batter_runs,0,dtype=int64; missing_pct=0.000
+deliveries,field_missing:extras_runs,0,dtype=int64; missing_pct=0.000
+deliveries,field_missing:total_runs,0,dtype=int64; missing_pct=0.000
+deliveries,field_missing:wides,0,dtype=int64; missing_pct=0.000
+deliveries,field_missing:noballs,0,dtype=int64; missing_pct=0.000
+deliveries,field_missing:byes,0,dtype=int64; missing_pct=0.000
+deliveries,field_missing:legbyes,0,dtype=int64; missing_pct=0.000
+deliveries,field_missing:wicket,0,dtype=int64; missing_pct=0.000
+deliveries,field_missing:wicket_type,281027,dtype=str; missing_pct=95.028
+deliveries,field_missing:player_out,281027,dtype=str; missing_pct=95.028
+deliveries,field_missing:fielders,285011,dtype=str; missing_pct=96.375
+deliveries,field_missing:penalty,0,dtype=int64; missing_pct=0.000
+deliveries,field_missing:batting_team,0,dtype=str; missing_pct=0.000
+deliveries,field_missing:bowling_team,0,dtype=str; missing_pct=0.000
+deliveries,field_missing:super_over,0,dtype=int64; missing_pct=0.000
+match_players,table_profile,27909,columns=4; missing_cells=0; exact_duplicate_rows=0
+match_players,field_missing:match_id,0,dtype=int64; missing_pct=0.000
+match_players,field_missing:team,0,dtype=str; missing_pct=0.000
+match_players,field_missing:player_name,0,dtype=str; missing_pct=0.000
+match_players,field_missing:player_id,0,dtype=str; missing_pct=0.000
+players,table_profile,811,columns=2; missing_cells=0; exact_duplicate_rows=0
+players,field_missing:player_id,0,dtype=str; missing_pct=0.000
+players,field_missing:player_name,0,dtype=str; missing_pct=0.000
+officials,table_profile,6187,columns=3; missing_cells=0; exact_duplicate_rows=0
+officials,field_missing:match_id,0,dtype=int64; missing_pct=0.000
+officials,field_missing:official_type,0,dtype=str; missing_pct=0.000
+officials,field_missing:official_name,0,dtype=str; missing_pct=0.000
+integrity,matches.match_id_unique,True,rows=1243
+integrity,deliveries_to_matches,True,unmatched_delivery_match_ids=0
+integrity,matches_to_deliveries,True,matches_without_delivery_ids=0
+integrity,roster_match_ids,True,unmatched_roster_match_ids=0
+integrity,roster_player_ids,False,unmatched_roster_player_ids=1
+integrity,match_player_natural_key,True,duplicate_pairs=0
+matches,date_range,2008-04-18 to 2026-05-31,season_labels=19; source_rows_chronological=False; multi_calendar_date_entries=2; date_policy=first listed date used as chronological anchor
+deliveries,duplicate_diagnostics,470,"exact rows repeat; duplicated (match_id, innings, over, ball) rows=11075; events are retained pending domain-level interpretation"
+deliveries,run_and_delivery_ranges,total_runs=0..7,"innings=1..6; over=0..19; super_over_values=[0, 1]"
