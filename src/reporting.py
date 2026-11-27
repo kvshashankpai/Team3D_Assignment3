@@ -88,12 +88,12 @@ The primary data are the A1 IPL match and delivery tables: 1,243 matches and 295
 The unit of analysis is one match's second-innings state after 36 legal balls in overs 0--5. Target equals first-innings total runs plus one. Chase success is whether the second-innings batting team matches the official winner. The pipeline retains all source delivery rows and excludes super-over events, ties, no-results, D/L matches, matches scheduled for fewer than seven overs, and innings with fewer than 36 legal balls in the first six overs. The final table contains {audit['eligible_states']:,} observations ({audit['successful_chases']:,} successful chases and {audit['unsuccessful_chases']:,} unsuccessful chases). The filtering does not remove outliers for visual convenience.
 
 \section{{Visual analytics workflow}}
-The workflow follows Keim et al.'s visual analytics process: data preparation, visualization and analysis interact to support interpretation. Figure~\ref{{fig:workflow}} unrolls the two iterations. The first iteration displays six-over runs and wickets, analyzes their outcome patterns, and identifies omitted target context. That quantified inference triggers the feedback transformation. The second iteration visualizes required rate and target-aware clusters, with a same-test-set model comparison.
+The workflow follows Keim et al.'s visual analytics process: data, visualization, modeling, and knowledge formation interact through bidirectional flows, while self-loops represent refinement within a stage. Here, knowledge means an inference supported by the analysis. Figure~\ref{{fig:workflow}} shows both this cyclic view and its unrolled, end-to-end execution. The first pass moves from data through visualization and modeling to result visualization. Its inference is that raw six-over runs and wickets omit target context. This knowledge feeds back by adding runs remaining and required run rate to the dataset representation. The next pass analyzes and visualizes the transformed state, compares models on the same holdout, and records a final inference. The matches and outcomes stay fixed across the transformation.
 
 \begin{{figure}}[H]
 \centering
 \includegraphics[width=0.94\linewidth]{{workflow_diagram.png}}
-\caption{{Unrolled visual analytics workflow. Every implementation stage maps to a source module or the pipeline orchestrator. The labeled feedback edge connects the iteration-one inference to the pressure-feature transformation.}}
+\caption{{Cyclic and unrolled visual analytics workflow. The upper view shows bidirectional interaction and within-stage refinement; the lower view expands the project's sequence. The labeled feedback edge connects an inference to a dataset transformation and the next iteration.}}
 \label{{fig:workflow}}
 \end{{figure}}
 
